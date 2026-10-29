@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bactomics-micpscope"
+version = "0.1.0a1"
+description = "Protein characterization and traceable MICP application evidence"
+requires-python = ">=3.10"
+dependencies = ["biopython==1.86"]
+
+[project.scripts]
+micpscope = "micpscope.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
