@@ -1,4 +1,4 @@
-"""MICPscope: protein descriptors followed by evidence reporting."""
+"""MICP Scope: protein descriptors followed by evidence reporting."""
 import csv
 from pathlib import Path
 import re

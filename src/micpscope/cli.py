@@ -55,14 +55,14 @@ def render(result):
     count = sum(p["status"] == "calculated" for p in proteins)
     return f"""<!doctype html><html lang="en"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MICPscope · {sample}</title><style>
+<title>MICP Scope · {sample}</title><style>
 :root{{font-family:system-ui,sans-serif;color:#173443;background:#eef3f5}}
 body{{max-width:1250px;margin:auto;padding:32px}}header{{background:#123c49;color:white;padding:32px;border-radius:16px}}
 h1{{font-size:36px;margin:8px 0}}h2{{margin-top:30px}}.label{{letter-spacing:3px;color:#88e3ca}}
 .card{{background:white;border:1px solid #ccdce2;border-radius:12px;padding:20px;margin-top:18px}}
 .scroll{{overflow:auto}}table{{border-collapse:collapse;width:100%;font-size:14px}}th,td{{text-align:left;padding:12px;border-bottom:1px solid #dbe5e9;vertical-align:top}}
 th{{background:#e4f1ee}}.muted{{color:#526974}}a{{color:#066e70}}@media print{{body{{padding:0}}.scroll{{overflow:visible}}}}
-</style><header><div class="label">BACTOMICS / MICPscope</div><h1>{sample}</h1>
+</style><header><div class="label">BACTOMICS / MICP Scope</div><h1>{sample}</h1>
 <p>Protein characterization & application evidence · {__version__}</p></header>
 <section class="card"><b>{len(proteins)} proteins</b> · {count} calculated · {len(proteins)-count} flagged
 <p>{LIMITS}</p><b>Operating conditions: undetermined</b></section>
@@ -77,7 +77,7 @@ th{{background:#e4f1ee}}.muted{{color:#526974}}a{{color:#066e70}}@media print{{b
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="MICPscope protein characterization and evidence report")
+    parser = argparse.ArgumentParser(description="MICP Scope protein characterization and evidence report")
     parser.add_argument("--version", action="version", version=__version__)
     parser.add_argument("--proteins", type=Path, required=True, help="Annotated protein FASTA (.faa), not genome DNA")
     parser.add_argument("--data-only", action="store_true", help="Write analysis data for the Snakemake report stage")
@@ -110,7 +110,7 @@ def main(argv=None):
         if report is not None:
             (args.out / "report.html").write_text(report, encoding="utf-8")
     except (OSError, ValueError) as error:
-        parser.exit(2, f"MICPscope: {error}\n")
+        parser.exit(2, f"MICP Scope: {error}\n")
     print(f"Outputs: {args.out}")
 
 

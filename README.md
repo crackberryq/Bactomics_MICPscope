@@ -1,4 +1,4 @@
-# Bactomics MICPscope
+# Bactomics MICP Scope
 
 **0.1.0a2 — initial alpha.** Protein characterization and traceable application evidence for MICP research, designed for future integration with HybAs, BaSIS and Bactologix.
 
@@ -13,7 +13,7 @@
 
 ## Run through Bactologix
 
-Select MICPscope in **Install & update**, install the recommended source and runner, then prepare its protein-properties environment. Register a sample folder containing `annotation/<sample_id>.faa`; optionally include `annotation/<sample_id>.evidence.csv`. Create a MICPscope draft, validate, prepare missing environments and run. Reports appear under Results & downloads.
+Select MICP Scope in **Install & update**, install the recommended source and runner, then prepare its protein-properties environment. Register a sample folder containing `annotation/<sample_id>.faa`; optionally include `annotation/<sample_id>.evidence.csv`. Create a MICP Scope draft, validate, prepare missing environments and run. Reports appear under Results & downloads.
 
 ## Snakemake structure
 
