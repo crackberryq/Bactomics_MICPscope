@@ -1,6 +1,6 @@
 # Bactomics MICPscope
 
-**0.1.0a1 — initial alpha.** Protein characterization and traceable application evidence for MICP research, designed for future integration with HybAs, BaSIS and Bactologix.
+**0.1.0a2 — initial alpha.** Protein characterization and traceable application evidence for MICP research, designed for future integration with HybAs, BaSIS and Bactologix.
 
 ## Available now
 
@@ -11,24 +11,28 @@
 - Input checksums, software versions and UTC timestamps.
 - Existing output directories are never overwritten.
 
-## Install and try
+## Run through Bactologix
 
-Python 3.10 or newer is required. From Ubuntu/WSL:
+Select MICPscope in **Install & update**, install the recommended source and runner, then prepare its protein-properties environment. Register a sample folder containing `annotation/<sample_id>.faa`; optionally include `annotation/<sample_id>.evidence.csv`. Create a MICPscope draft, validate, prepare missing environments and run. Reports appear under Results & downloads.
+
+## Snakemake structure
+
+- `MICPscope.smk`: native DAG, separate properties and report rules.
+- `environment.yml`: Python 3.11 / Snakemake 9.6.2 runner.
+- `envs/properties.yml`: rule-local Python / Biopython environment and post-deploy check.
+- `config.yaml` and `examples/samples.tsv`: configuration and batch inputs.
+- `scripts/`: workflow entry points; `src/micpscope/`: reusable analysis code.
+- Outputs: `<output_dir>/<sample_id>/micpscope/`, including JSON, TSV, HTML, logs and benchmarks.
+
+For standalone development, create the Conda runner from `environment.yml`, then use:
 
 ```bash
-mkdir -p ~/bactomics
-cd ~/bactomics
-git clone https://github.com/crackberryq/Bactomics_MICPscope.git
-cd Bactomics_MICPscope
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install .
-micpscope --proteins examples/demo.faa --sample demo --out results/demo
+snakemake --snakefile MICPscope.smk --cores 1 --use-conda --dry-run
+snakemake --snakefile MICPscope.smk --cores 1 --use-conda --conda-create-envs-only
+snakemake --snakefile MICPscope.smk --cores 1 --use-conda
 ```
 
-Open `results/demo/report.html` in a browser. The demo contains synthetic composition fixtures, not MICP proteins. On WSL, `explorer.exe "$(wslpath -w results/demo)"` opens the results directory.
-
-For your own annotated **protein** FASTA (`.faa`), replace the input and sample name and choose a new output directory. Genome DNA must first be annotated externally; sequence alphabet alone cannot reliably distinguish DNA from proteins.
+The default configuration runs synthetic fixtures only. Sample-sheet paths resolve relative to the workflow working directory; absolute paths are recommended. Supply annotated protein FASTA, not genome DNA. The previous `micpscope` Python CLI remains available for developer use. Snakemake manages resumability and reruns; the standalone CLI still refuses existing output directories.
 
 ## Evidence
 
@@ -47,7 +51,7 @@ One terminal stop is removed and documented; sequences with other unsupported re
 1. Curated, versioned functional evidence catalogue and validated annotation import.
 2. HybAs/BaSIS result adapters with explicit schema compatibility checks.
 3. Measured material-performance and formulation comparison, with uncertainty and units.
-4. Bactologix interface and batch workflow integration.
+4. Expand application-specific evidence views.
 
 These are planned features, not implemented capabilities. This alpha does not identify pathways, rank strains, infer formulation conditions, design genetic changes or certify deployment.
 

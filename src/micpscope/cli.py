@@ -80,6 +80,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="MICPscope protein characterization and evidence report")
     parser.add_argument("--version", action="version", version=__version__)
     parser.add_argument("--proteins", type=Path, required=True, help="Annotated protein FASTA (.faa), not genome DNA")
+    parser.add_argument("--data-only", action="store_true", help="Write analysis data for the Snakemake report stage")
     parser.add_argument("--sample", required=True)
     parser.add_argument("--evidence", type=Path, help="Optional evidence CSV")
     parser.add_argument("--out", type=Path, required=True, help="New output directory; existing paths are never overwritten")
@@ -95,7 +96,7 @@ def main(argv=None):
                           evidence_sha256=hashlib.sha256(args.evidence.read_bytes()).hexdigest() if args.evidence else None,
                           created_utc=datetime.now(timezone.utc).isoformat(),
                           python_version=platform.python_version(), biopython_version=Bio.__version__))
-        report = render(result)
+        report = None if args.data_only else render(result)
         columns = ["protein_id", "description", "length", "status", "aliphatic_index", "theoretical_pi", "gravy", "instability_index", "molecular_weight_da", "aromaticity", "sequence_sha256", "evidence_type", "completeness", "notes"]
         buffer = io.StringIO(newline="")
         writer = csv.DictWriter(buffer, fieldnames=columns, extrasaction="ignore", delimiter="\t")
@@ -106,10 +107,11 @@ def main(argv=None):
         args.out.mkdir(parents=True, exist_ok=False)
         (args.out / "results.json").write_text(json.dumps(result, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         (args.out / "proteins.tsv").write_text(buffer.getvalue(), encoding="utf-8")
-        (args.out / "report.html").write_text(report, encoding="utf-8")
+        if report is not None:
+            (args.out / "report.html").write_text(report, encoding="utf-8")
     except (OSError, ValueError) as error:
         parser.exit(2, f"MICPscope: {error}\n")
-    print(f"Report: {args.out / 'report.html'}")
+    print(f"Outputs: {args.out}")
 
 
 if __name__ == "__main__":

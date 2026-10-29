@@ -1,0 +1,9 @@
+name: micpscope-snake
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - python=3.11
+  - snakemake-minimal=9.6.2
+  - pyyaml=6

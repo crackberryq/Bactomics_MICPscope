@@ -1,0 +1,5 @@
+# Paths are relative to the workflow working directory unless absolute.
+samples: examples/samples.tsv
+output_dir: results
+threads: 1
+memory_mb: 2048
