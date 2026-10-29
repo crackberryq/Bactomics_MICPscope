@@ -43,12 +43,18 @@ def characterize(identifier, description, raw_sequence):
     sequence = raw_sequence.removesuffix("*")
     row = dict(protein_id=identifier, description=description, length=len(sequence),
                sequence_sha256=hashlib.sha256(sequence.encode()).hexdigest(),
+               sequence_md5=hashlib.md5(sequence.encode()).hexdigest(),
+               quality_flags=[],
                evidence_type="calculated", completeness="unassessed",
                status="calculated", notes="")
     if raw_sequence.endswith("*"):
         row["notes"] = "One terminal stop removed. "
+        row['quality_flags'].append('terminal stop removed')
+    if '*' in sequence:
+        row['quality_flags'].append('internal stop character')
     invalid = sorted(set(sequence) - STANDARD)
     if invalid or not sequence:
+        row['quality_flags'].append('unsupported residues or empty normalized sequence')
         row.update(status="not_calculated", notes=row["notes"] +
                    "Unsupported/ambiguous residues or empty sequence: " + ",".join(invalid))
         return row

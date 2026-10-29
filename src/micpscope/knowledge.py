@@ -14,7 +14,7 @@ def load_catalog():
 def annotation_context(identifier, description, catalog):
     # FASTA identifier is retained separately. Never substring-match locus tags.
     product = description.split(maxsplit=1)[1] if len(description.split(maxsplit=1)) == 2 else ''
-    explicit = re.findall(r'(?:\bgene=|\bGN=)([A-Za-z0-9_-]+)', product, re.I)
+    explicit = re.findall(r'(?:\bgene=|\bGN=)([A-Za-z0-9_-]+)', description, re.I)
     tokens = set(re.findall(r'(?<![\w-])[A-Za-z][A-Za-z0-9]*(?![\w-])', product))
     tokens.add(identifier)
     symbols = {x.casefold() for x in (explicit or tokens)}

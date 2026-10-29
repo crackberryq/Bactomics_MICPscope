@@ -1,6 +1,6 @@
 # Bactomics MICP Scope
 
-**0.1.0a4 — MICP Scope alpha.** Protein characterization and traceable application evidence for MICP research, managed through Bactologix alongside HybAs AWARE and BaSIS AWARE.
+**0.1.0a5 — MICP Scope alpha.** Protein characterization and traceable application evidence for MICP research, managed through Bactologix alongside HybAs AWARE and BaSIS AWARE.
 
 ## Available now
 
@@ -14,7 +14,7 @@
 
 ## Run through Bactologix
 
-Select MICP Scope in **Install & update**, install the named `micpscope-v0.1.0a4` compatible snapshot. First installation prepares the runner and rule environment. Register a sample folder containing `annotation/<sample_id>.faa`; optionally include `annotation/<sample_id>.evidence.csv`. Create a MICP Scope draft, validate, prepare missing environments and run. Reports appear under Results & downloads.
+Select MICP Scope in **Install & update**, install the named `micpscope-v0.1.0a5` compatible snapshot. First installation prepares the runner and rule environment. Register a sample folder containing `annotation/<sample_id>.faa`; optionally include `annotation/<sample_id>.evidence.csv`. Create a MICP Scope draft, validate, prepare missing environments and run. Reports appear under Results & downloads.
 
 ## Snakemake structure
 
@@ -78,3 +78,15 @@ Annotation uses supplied FASTA headers: explicit `gene=` / UniProt `GN=` symbols
 The report separates direct urease context, candidate associations and indirect matrix/sporulation context. Instability index uses the documented below/above-40 heuristic, with exactly 40 left unclassified. No universal aliphatic-index temperature bins or pI activity-pH bins are supported by the reviewed methodology. Numeric operating optima remain undetermined; sample-linked measured or literature observations can be supplied through the existing evidence CSV with identity and assay context.
 
 For later table curation, each catalog entry has `id`, `gene_symbols`, `protein_name`, `product_aliases`, `category`, `function`, `references`, `scope`, and `evidence_level`. Update cited sources and catalog version together. Avoid broad aliases that conflate unrelated families.
+
+## Compact report and optional recorded context
+
+Reports open with a compact overview. Categories, unresolved records, quality flags, protein details, evidence and methods are collapsed. Empty categories live under a separate disclosure. Search opens matching categories and records; category filters, Collapse all, filtered TSV export and Print / Save PDF work offline.
+
+New optional inputs are discovered beside the protein FASTA: `annotation/<sample_id>.gff` for GFF3 CDS coordinates and `annotation/<sample_id>.interpro.tsv` for classic InterProScan TSV (11–15 columns). Bactologix stages existing files automatically; no manual installation of report assets is needed. Protein-only runs remain supported. These are sample analysis inputs, not downloadable reference databases.
+
+GFF3 joins use exact CDS `ID`, `protein_id` or `locus_tag`. Multiple matching CDS segments remain unresolved for neighborhood display. Coordinates use the supplied annotation, without rechecking the genomic sequence. Neighborhoods show two adjacent CDS records on either side, and do not establish an operon or co-transcription.
+
+Imported InterProScan matches require the same protein identifier, sequence length and MD5 as the normalized input protein. Duplicate identical rows are merged. Signature coordinates must lie within the sequence; mismatches fail explicitly. Unmatched identifiers are counted, and a missing TSV row means assessment coverage is unknown. Signature tracks include families/sites as well as domains. No external analysis is run implicitly.
+
+Protein cards also show amino-acid composition, residue flags and identical-sequence record groups. They do not infer frameshifts, truncation, genomic copy number or biological completeness. See [analysis-tools.md](docs/analysis-tools.md) for implemented tools and remaining analysis stages.

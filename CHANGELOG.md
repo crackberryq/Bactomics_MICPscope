@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0a5 — compact report and recorded protein/genome context
+
+Fully collapsible categories and ancillary sections, category filtering, search reveal, filtered TSV export, print support, residue quality flags, composition and identical-sequence groups. Add optional exact-ID GFF3 neighborhood import and sequence-verified InterProScan signature import with offline diagrams. Keep existing inputs and output paths compatible.
+
 ## 0.1.0a4 — MICP Scope
 
 Named `micpscope-v0.1.0a4` release, versioned 20-entry literature catalog, conservative header annotation mapping, categorized offline report with search and expandable protein details, source-linked functions and descriptor interpretations. No descriptor-to-temperature/pH optimum conversion is claimed. Catalog hash and full catalog are embedded in JSON.

@@ -11,6 +11,7 @@ import Bio
 from . import __version__
 from .analysis import characterize, read_fasta
 from .knowledge import load_catalog, enrich
+from .context import add_context
 from .report import render_report, table
 
 LIMITS = ("Sequence descriptors do not establish temperature or pH optima, shelf life, "
@@ -51,6 +52,8 @@ def main(argv=None):
     parser.add_argument("--data-only", action="store_true", help="Write analysis data for the Snakemake report stage")
     parser.add_argument("--sample", required=True)
     parser.add_argument("--evidence", type=Path, help="Optional evidence CSV")
+    parser.add_argument('--gff', type=Path, help='Optional recorded GFF3 CDS coordinates')
+    parser.add_argument('--interpro', type=Path, help='Optional InterProScan TSV signatures')
     parser.add_argument("--out", type=Path, required=True, help="New output directory; existing paths are never overwritten")
     args = parser.parse_args(argv)
     try:
@@ -58,8 +61,12 @@ def main(argv=None):
         proteins = [characterize(*record) for record in read_fasta(raw.decode("utf-8-sig"))]
         catalog, catalog_sha256 = load_catalog()
         enrich(proteins, catalog)
+        gff = args.gff or (args.proteins.with_suffix('.gff') if args.proteins.with_suffix('.gff').is_file() else None)
+        interpro = args.interpro or (args.proteins.with_suffix('.interpro.tsv') if args.proteins.with_suffix('.interpro.tsv').is_file() else None)
+        context = add_context(proteins, gff, interpro)
         evidence = read_evidence(args.evidence, args.sample)
-        result = dict(schema_version="1.1", software_version=__version__, sample_id=args.sample,
+        result = dict(schema_version="1.2", software_version=__version__, sample_id=args.sample,
+                      context=context,
                       proteins=proteins, evidence=evidence, operating_conditions="undetermined",
                       knowledge_catalog=catalog,
                       limitations=LIMITS, provenance=dict(

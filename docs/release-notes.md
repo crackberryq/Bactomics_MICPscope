@@ -1,10 +1,10 @@
-MICP Scope 0.1.0a4
+MICP Scope 0.1.0a5
 
-Install and run through Bactologix. This named release retains the Snakemake workflow and existing output paths.
+Install and update through Bactologix. Catalogs and report code remain bundled.
 
-- A versioned, referenced JSON catalog of 20 starter entries across urease, maturation, inorganic carbon conversion, metabolism, matrix/biofilm and sporulation context.
-- Categorized offline reports with gene/protein names, functions, evidence level, search and expandable property tables.
-- Conservative use of supplied annotations; ambiguous labels remain unresolved. This release does not perform sequence-based function detection.
-- Explicit descriptor interpretations and provenance. No unsupported conversion from aliphatic index or pI to operating temperature/pH.
+- Compact overview with fully collapsible categories, unresolved records, protein details, quality, evidence and methods.
+- Search reveal, category filters, Collapse all, filtered TSV export and Print / Save PDF.
+- Protein composition, residue flags and identical-sequence record groups.
+- Optional recorded GFF3 neighborhoods and InterProScan TSV signature diagrams; input identity validation and provenance.
 
-The catalog is a focused starter review, not an exhaustive inventory. Operating optima remain undetermined without appropriate experimental evidence. Existing reports are preserved; the new layout applies to newly generated reports.
+These additions display recorded context. They do not run an operon predictor, localization predictor or structure model, and do not infer an activity optimum. Existing reports remain untouched.
