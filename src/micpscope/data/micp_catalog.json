@@ -1,0 +1,475 @@
+{
+  "schema_version": "1.0",
+  "catalog_version": "2026.10-starter.1",
+  "reviewed_on": "2026-10-29",
+  "scope": "Focused starter review for descriptive MICP annotation reporting; not an exhaustive gene inventory or a sequence reference database.",
+  "curation_policy": "Primary studies support biological entries. Header matches are unverified supplied annotations. Indirect context is distinct from MICP-specific evidence. No engineering interventions or operating recipes are encoded.",
+  "coverage_gaps": [
+    "Non-ureolytic pathways including denitrification and photosynthetic routes",
+    "Broader EPS, transport, germination and sporulation families",
+    "Taxon-specific synonym review and sequence-confirmed annotation"
+  ],
+  "categories": [
+    {
+      "id": "urease",
+      "name": "Urease: catalysis",
+      "description": "Structural components of urea-hydrolysing enzymes."
+    },
+    {
+      "id": "maturation",
+      "name": "Urease: maturation",
+      "description": "Accessory proteins associated with urease maturation."
+    },
+    {
+      "id": "carbonate",
+      "name": "Inorganic carbon conversion",
+      "description": "Carbonic anhydrase families and reported candidates."
+    },
+    {
+      "id": "metabolism",
+      "name": "Metabolism associated with mineralization",
+      "description": "Context-dependent metabolic associations reported in B. subtilis."
+    },
+    {
+      "id": "matrix",
+      "name": "Extracellular matrix / biofilm",
+      "description": "Matrix context; not a mineralization-specific marker."
+    },
+    {
+      "id": "sporulation",
+      "name": "Sporulation context",
+      "description": "Developmental annotation only; no persistence or survival prediction."
+    },
+    {
+      "id": "unassigned",
+      "name": "Other / unresolved annotations",
+      "description": "No unique catalog assignment; this does not establish absence of a pathway."
+    }
+  ],
+  "entries": [
+    {
+      "id": "ureA",
+      "gene_symbols": [
+        "ureA"
+      ],
+      "protein_name": "Urease subunit gamma",
+      "product_aliases": [
+        "urease subunit gamma",
+        "urease gamma subunit"
+      ],
+      "category": "urease",
+      "function": "Small structural component of the multimeric urea-hydrolysing enzyme.",
+      "references": [
+        "urease2020",
+        "urease2025"
+      ],
+      "scope": "Three-subunit bacterial naming convention; other taxa may use different names or fused subunits.",
+      "evidence_level": "reported urease component"
+    },
+    {
+      "id": "ureB",
+      "gene_symbols": [
+        "ureB"
+      ],
+      "protein_name": "Urease subunit beta",
+      "product_aliases": [
+        "urease subunit beta",
+        "urease beta subunit"
+      ],
+      "category": "urease",
+      "function": "Structural component of the multimeric urea-hydrolysing enzyme.",
+      "references": [
+        "urease2020",
+        "urease2025"
+      ],
+      "scope": "Three-subunit bacterial naming convention; other taxa may use different names or fused subunits.",
+      "evidence_level": "reported urease component"
+    },
+    {
+      "id": "ureC",
+      "gene_symbols": [
+        "ureC"
+      ],
+      "protein_name": "Urease subunit alpha",
+      "product_aliases": [
+        "urease subunit alpha",
+        "urease alpha subunit"
+      ],
+      "category": "urease",
+      "function": "Catalytic component of the multimeric urea-hydrolysing enzyme.",
+      "references": [
+        "urease2020",
+        "urease2025"
+      ],
+      "scope": "Three-subunit bacterial naming convention; other taxa may use different names or fused subunits.",
+      "evidence_level": "reported urease component"
+    },
+    {
+      "id": "ureD",
+      "gene_symbols": [
+        "ureD"
+      ],
+      "protein_name": "Urease accessory protein UreD",
+      "product_aliases": [
+        "urease accessory protein ureD"
+      ],
+      "category": "maturation",
+      "function": "Accessory assembly factor.",
+      "references": [
+        "urease2020"
+      ],
+      "scope": "Evidence in S. pasteurii; annotation alone does not establish active urease.",
+      "evidence_level": "reported urease component"
+    },
+    {
+      "id": "ureE",
+      "gene_symbols": [
+        "ureE"
+      ],
+      "protein_name": "Urease accessory protein UreE",
+      "product_aliases": [
+        "urease accessory protein ureE"
+      ],
+      "category": "maturation",
+      "function": "Nickel-binding donor involved in maturation.",
+      "references": [
+        "urease2020"
+      ],
+      "scope": "Evidence in S. pasteurii; annotation alone does not establish active urease.",
+      "evidence_level": "reported urease component"
+    },
+    {
+      "id": "ureF",
+      "gene_symbols": [
+        "ureF"
+      ],
+      "protein_name": "Urease accessory protein UreF",
+      "product_aliases": [
+        "urease accessory protein ureF"
+      ],
+      "category": "maturation",
+      "function": "Accessory factor in the maturation complex.",
+      "references": [
+        "urease2020"
+      ],
+      "scope": "Evidence in S. pasteurii; annotation alone does not establish active urease.",
+      "evidence_level": "reported urease component"
+    },
+    {
+      "id": "ureG",
+      "gene_symbols": [
+        "ureG"
+      ],
+      "protein_name": "Urease accessory protein UreG",
+      "product_aliases": [
+        "urease accessory protein ureG"
+      ],
+      "category": "maturation",
+      "function": "GTP-dependent accessory factor in maturation.",
+      "references": [
+        "urease2020"
+      ],
+      "scope": "Evidence in S. pasteurii; annotation alone does not establish active urease.",
+      "evidence_level": "reported urease component"
+    },
+    {
+      "id": "ca_alpha",
+      "gene_symbols": [],
+      "protein_name": "Alpha-class carbonic anhydrase",
+      "product_aliases": [
+        "alpha-class carbonic anhydrase",
+        "alpha carbonic anhydrase"
+      ],
+      "category": "carbonate",
+      "function": "Catalyses reversible carbon dioxide / bicarbonate interconversion.",
+      "references": [
+        "ca2024"
+      ],
+      "scope": "Family-level evidence in Sporosarcina isolates; gene naming and mineralization contribution vary.",
+      "evidence_level": "family-level experimental association"
+    },
+    {
+      "id": "ca_beta",
+      "gene_symbols": [],
+      "protein_name": "Beta-class carbonic anhydrase",
+      "product_aliases": [
+        "beta-class carbonic anhydrase",
+        "beta carbonic anhydrase"
+      ],
+      "category": "carbonate",
+      "function": "Catalyses reversible carbon dioxide / bicarbonate interconversion.",
+      "references": [
+        "ca2024"
+      ],
+      "scope": "Family-level evidence in Sporosarcina isolates; gene naming and mineralization contribution vary.",
+      "evidence_level": "family-level experimental association"
+    },
+    {
+      "id": "ca_gamma",
+      "gene_symbols": [],
+      "protein_name": "Gamma-class carbonic anhydrase",
+      "product_aliases": [
+        "gamma-class carbonic anhydrase",
+        "gamma carbonic anhydrase"
+      ],
+      "category": "carbonate",
+      "function": "Catalyses reversible carbon dioxide / bicarbonate interconversion.",
+      "references": [
+        "ca2024"
+      ],
+      "scope": "Family-level evidence in Sporosarcina isolates; gene naming and mineralization contribution vary.",
+      "evidence_level": "family-level experimental association"
+    },
+    {
+      "id": "yvdA",
+      "gene_symbols": [
+        "yvdA"
+      ],
+      "protein_name": "Putative carbonic anhydrase YvdA",
+      "product_aliases": [],
+      "category": "carbonate",
+      "function": "Reported carbonic-anhydrase candidate.",
+      "references": [
+        "scaffold2017"
+      ],
+      "scope": "B. subtilis candidates; individual and combined disruptions had mild effects in the studied context. Family/function require independent verification.",
+      "evidence_level": "candidate association"
+    },
+    {
+      "id": "ybcF",
+      "gene_symbols": [
+        "ybcF"
+      ],
+      "protein_name": "Putative carbonic anhydrase YbcF",
+      "product_aliases": [],
+      "category": "carbonate",
+      "function": "Reported carbonic-anhydrase candidate.",
+      "references": [
+        "scaffold2017"
+      ],
+      "scope": "B. subtilis candidates; individual and combined disruptions had mild effects in the studied context. Family/function require independent verification.",
+      "evidence_level": "candidate association"
+    },
+    {
+      "id": "ytiB",
+      "gene_symbols": [
+        "ytiB"
+      ],
+      "protein_name": "Putative carbonic anhydrase YtiB",
+      "product_aliases": [],
+      "category": "carbonate",
+      "function": "Reported carbonic-anhydrase candidate.",
+      "references": [
+        "scaffold2017"
+      ],
+      "scope": "B. subtilis candidates; individual and combined disruptions had mild effects in the studied context. Family/function require independent verification.",
+      "evidence_level": "candidate association"
+    },
+    {
+      "id": "etfA",
+      "gene_symbols": [
+        "etfA"
+      ],
+      "protein_name": "Electron transfer flavoprotein alpha subunit",
+      "product_aliases": [],
+      "category": "metabolism",
+      "function": "Electron transfer associated with fatty-acid metabolism.",
+      "references": [
+        "calcite2007",
+        "etfa2010"
+      ],
+      "scope": "B. subtilis 168 cluster association. Stronger gene-specific evidence for etfA; cluster membership is not proof of a direct precipitation function.",
+      "evidence_level": "gene-specific association"
+    },
+    {
+      "id": "etfB",
+      "gene_symbols": [
+        "etfB"
+      ],
+      "protein_name": "Electron transfer flavoprotein beta subunit",
+      "product_aliases": [],
+      "category": "metabolism",
+      "function": "Partner in electron-transfer metabolism.",
+      "references": [
+        "calcite2007"
+      ],
+      "scope": "B. subtilis 168 cluster association. Stronger gene-specific evidence for etfA; cluster membership is not proof of a direct precipitation function.",
+      "evidence_level": "cluster context"
+    },
+    {
+      "id": "lcfA",
+      "gene_symbols": [
+        "lcfA"
+      ],
+      "protein_name": "Long-chain fatty-acid CoA ligase",
+      "product_aliases": [],
+      "category": "metabolism",
+      "function": "Fatty-acid activation.",
+      "references": [
+        "calcite2007"
+      ],
+      "scope": "B. subtilis 168 cluster association. Stronger gene-specific evidence for etfA; cluster membership is not proof of a direct precipitation function.",
+      "evidence_level": "cluster context"
+    },
+    {
+      "id": "ysiA",
+      "gene_symbols": [
+        "ysiA"
+      ],
+      "protein_name": "Fatty-acid metabolism regulator",
+      "product_aliases": [],
+      "category": "metabolism",
+      "function": "Transcriptional regulation in the studied metabolic cluster.",
+      "references": [
+        "calcite2007"
+      ],
+      "scope": "B. subtilis 168 cluster association. Stronger gene-specific evidence for etfA; cluster membership is not proof of a direct precipitation function.",
+      "evidence_level": "cluster context"
+    },
+    {
+      "id": "ysiB",
+      "gene_symbols": [
+        "ysiB"
+      ],
+      "protein_name": "Putative fatty-acid metabolism protein",
+      "product_aliases": [],
+      "category": "metabolism",
+      "function": "Putative metabolic component of the studied cluster.",
+      "references": [
+        "calcite2007"
+      ],
+      "scope": "B. subtilis 168 cluster association. Stronger gene-specific evidence for etfA; cluster membership is not proof of a direct precipitation function.",
+      "evidence_level": "cluster context"
+    },
+    {
+      "id": "tasA",
+      "gene_symbols": [
+        "tasA"
+      ],
+      "protein_name": "Biofilm matrix protein TasA",
+      "product_aliases": [
+        "biofilm matrix protein tasa"
+      ],
+      "category": "matrix",
+      "function": "Forms extracellular fibres that help maintain biofilm structure.",
+      "references": [
+        "matrix2010"
+      ],
+      "scope": "B. subtilis matrix function; not sufficient evidence of carbonate precipitation.",
+      "evidence_level": "indirect biological context"
+    },
+    {
+      "id": "spo0A",
+      "gene_symbols": [
+        "spo0A"
+      ],
+      "protein_name": "Sporulation response regulator Spo0A",
+      "product_aliases": [
+        "sporulation response regulator spo0a"
+      ],
+      "category": "sporulation",
+      "function": "Transcriptional regulator associated with entry into sporulation.",
+      "references": [
+        "spo0a2005"
+      ],
+      "scope": "B. subtilis developmental context. Does not establish spore formation, survival, shelf life, or MICP activity.",
+      "evidence_level": "indirect biological context"
+    }
+  ],
+  "descriptor_rules": [
+    {
+      "property": "aliphatic_index",
+      "thresholds": null,
+      "interpretation": "Composition descriptor associated with globular-protein thermostability; no validated universal temperature conversion.",
+      "references": [
+        "protparam"
+      ]
+    },
+    {
+      "property": "theoretical_pi",
+      "thresholds": null,
+      "interpretation": "Estimated charge-neutral pH, not optimal enzyme activity pH.",
+      "references": [
+        "protparam"
+      ]
+    },
+    {
+      "property": "instability_index",
+      "thresholds": {
+        "below": 40,
+        "above": 40,
+        "boundary": "unclassified"
+      },
+      "interpretation": "Sequence heuristic only; not shelf life or a temperature prediction.",
+      "references": [
+        "protparam"
+      ]
+    },
+    {
+      "property": "gravy",
+      "thresholds": {
+        "sign_boundary": 0
+      },
+      "interpretation": "Mean hydropathy sign; not a solubility or formulation prediction.",
+      "references": [
+        "protparam"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "urease2020",
+      "title": "Beneficial factors for biomineralization by ureolytic bacterium Sporosarcina pasteurii (2020)",
+      "url": "https://doi.org/10.1186/s12934-020-1281-z",
+      "type": "primary research"
+    },
+    {
+      "id": "urease2025",
+      "title": "A novel urease gene structure of Sporosarcina pasteurii with double operons (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39985601/",
+      "type": "primary research"
+    },
+    {
+      "id": "ca2024",
+      "title": "Molecular and geochemical basis of microbially induced carbonate precipitation: Sporosarcina isolates (2024)",
+      "url": "https://doi.org/10.1016/j.jhazmat.2024.135005",
+      "type": "primary research"
+    },
+    {
+      "id": "calcite2007",
+      "title": "Bacillus subtilis gene cluster involved in calcium carbonate biomineralization (2007)",
+      "url": "https://doi.org/10.1128/JB.01450-06",
+      "type": "primary research"
+    },
+    {
+      "id": "etfa2010",
+      "title": "Physiological requirements for carbonate precipitation during biofilm development of Bacillus subtilis etfA mutant (2010)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20059546/",
+      "type": "primary research"
+    },
+    {
+      "id": "matrix2010",
+      "title": "Amyloid fibers provide structural integrity to Bacillus subtilis biofilms (2010)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20080671/",
+      "type": "primary research"
+    },
+    {
+      "id": "spo0a2005",
+      "title": "Evidence that entry into sporulation in Bacillus subtilis is governed by a gradual increase in the level and activity of the master regulator Spo0A (2005)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16166384/",
+      "type": "primary research"
+    },
+    {
+      "id": "scaffold2017",
+      "title": "Spatio-temporal assembly of functional mineral scaffolds within microbial biofilms (2017)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5515261/",
+      "type": "primary research"
+    },
+    {
+      "id": "protparam",
+      "title": "ExPASy ProtParam documentation",
+      "url": "https://web.expasy.org/protparam/protparam-doc.html",
+      "type": "official methods documentation"
+    }
+  ]
+}

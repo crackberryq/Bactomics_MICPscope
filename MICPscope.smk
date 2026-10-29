@@ -39,7 +39,7 @@ rule protein_properties:
         proteins=lambda w: SAMPLES[w.sample]["proteins"],
         evidence=lambda w: [SAMPLES[w.sample]["evidence"]] if SAMPLES[w.sample]["evidence"] else [],
         sheet=str(SHEET),
-        code=[str(ROOT / "src/micpscope" / name) for name in ["analysis.py", "cli.py", "__init__.py"]]
+        code=[str(ROOT / "src/micpscope" / name) for name in ["analysis.py", "cli.py", "knowledge.py", "report.py", "data/micp_catalog.json", "__init__.py"]]
     output:
         data=OUT + "/{sample}/micpscope/results.json",
         table=OUT + "/{sample}/micpscope/proteins.tsv"
@@ -60,7 +60,7 @@ rule report:
     input:
         data=rules.protein_properties.output.data,
         table=rules.protein_properties.output.table,
-        code=str(ROOT / "src/micpscope/cli.py")
+        code=[str(ROOT / "src/micpscope" / name) for name in ["cli.py", "report.py"]]
     output:
         OUT + "/{sample}/micpscope/report.html"
     log:

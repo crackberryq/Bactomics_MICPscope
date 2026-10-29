@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0a4 — MICP Scope
+
+Named `micpscope-v0.1.0a4` release, versioned 20-entry literature catalog, conservative header annotation mapping, categorized offline report with search and expandable protein details, source-linked functions and descriptor interpretations. No descriptor-to-temperature/pH optimum conversion is claimed. Catalog hash and full catalog are embedded in JSON.
+
 ## 0.1.0a3
 
 Use **MICP Scope** as the display name in reports, CLI messages and documentation. Repository, workflow filenames and command names remain compatible.

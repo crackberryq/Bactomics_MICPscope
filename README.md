@@ -1,9 +1,10 @@
 # Bactomics MICP Scope
 
-**0.1.0a2 — initial alpha.** Protein characterization and traceable application evidence for MICP research, designed for future integration with HybAs, BaSIS and Bactologix.
+**0.1.0a4 — MICP Scope alpha.** Protein characterization and traceable application evidence for MICP research, managed through Bactologix alongside HybAs AWARE and BaSIS AWARE.
 
 ## Available now
 
+- Versioned literature catalog and categorized gene/function report with searchable, expandable protein details.
 - Protein FASTA input, explicit validation and per-record ambiguity flags.
 - Aliphatic index, theoretical pI, GRAVY, instability index, molecular weight, aromaticity and amino-acid counts.
 - Optional sample-linked evidence CSV import with source attribution.
@@ -13,7 +14,7 @@
 
 ## Run through Bactologix
 
-Select MICP Scope in **Install & update**, install the recommended source and runner, then prepare its protein-properties environment. Register a sample folder containing `annotation/<sample_id>.faa`; optionally include `annotation/<sample_id>.evidence.csv`. Create a MICP Scope draft, validate, prepare missing environments and run. Reports appear under Results & downloads.
+Select MICP Scope in **Install & update**, install the named `micpscope-v0.1.0a4` compatible snapshot. First installation prepares the runner and rule environment. Register a sample folder containing `annotation/<sample_id>.faa`; optionally include `annotation/<sample_id>.evidence.csv`. Create a MICP Scope draft, validate, prepare missing environments and run. Reports appear under Results & downloads.
 
 ## Snakemake structure
 
@@ -42,13 +43,13 @@ Entries are displayed as supplied, not independently verified or converted into 
 
 ## Interpretation limits
 
-Aliphatic index is not an optimum temperature. Theoretical pI is not an optimum pH. Instability index is not shelf life. Sequence properties do not demonstrate mineralization, material compatibility or safe deployment. Completeness and biological function remain unassessed; headers are retained but not treated as functional evidence. Operating conditions remain undetermined.
+Aliphatic index is not an optimum temperature. Theoretical pI is not an optimum pH. Instability index is not shelf life. Sequence properties do not demonstrate mineralization, material compatibility or safe deployment. Completeness remains unassessed. Header labels are linked conservatively to the catalog and explicitly labeled as unverified annotation; this is not sequence-based function detection. Operating conditions remain undetermined.
 
 One terminal stop is removed and documented; sequences with other unsupported residues are retained as flagged records without property calculations. Duplicate IDs, empty records and malformed FASTA fail validation. Original sequence hashes and input-file hashes provide traceability. TSV text fields beginning with formula characters are prefixed with an apostrophe for spreadsheet safety; JSON preserves original text.
 
 ## Planned stages
 
-1. Curated, versioned functional evidence catalogue and validated annotation import.
+1. Broader primary-literature catalog coverage and sequence-confirmed functional annotation.
 2. HybAs/BaSIS result adapters with explicit schema compatibility checks.
 3. Measured material-performance and formulation comparison, with uncertainty and units.
 4. Expand application-specific evidence views.
@@ -67,3 +68,13 @@ python -m unittest discover -s tests -v
 ```
 
 No license has yet been selected by the repository owner.
+
+## Literature catalog and annotation
+
+The packaged [`micp_catalog.json`](src/micpscope/data/micp_catalog.json) contains 20 starter entries across six biological categories, references, taxonomic scope, evidence levels, descriptor rules and coverage gaps. It is a focused review, **not an exhaustive MICP gene inventory**. The full catalog and its SHA-256 are embedded in each new JSON result.
+
+Annotation uses supplied FASTA headers: explicit `gene=` / UniProt `GN=` symbols, standalone known symbols, or specific product phrases. For example, `>locus_1 [gene=ureC] urease subunit alpha` can link to the urease category. This does not validate function from sequence. Conflicting matches remain unresolved; missing labels are not biological absence. Plain locus-only FASTA cannot provide gene names. Generic product descriptions remain visible even without a catalog match.
+
+The report separates direct urease context, candidate associations and indirect matrix/sporulation context. Instability index uses the documented below/above-40 heuristic, with exactly 40 left unclassified. No universal aliphatic-index temperature bins or pI activity-pH bins are supported by the reviewed methodology. Numeric operating optima remain undetermined; sample-linked measured or literature observations can be supplied through the existing evidence CSV with identity and assay context.
+
+For later table curation, each catalog entry has `id`, `gene_symbols`, `protein_name`, `product_aliases`, `category`, `function`, `references`, `scope`, and `evidence_level`. Update cited sources and catalog version together. Avoid broad aliases that conflate unrelated families.
